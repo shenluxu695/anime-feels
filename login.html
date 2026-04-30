@@ -3,75 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Integration - Anime Feels</title>
+    <meta name="tiktok-developers-site-verification" content="olQG6agNdTEbAN7WsVNo49FltVx7j9EJ">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <title>Login - Anime Feels</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f13; color: #e0e0e0; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        h1 { font-size: 2em; margin-bottom: 20px; background: linear-gradient(135deg, #ff6b6b, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h2 { color: #fff; margin: 25px 0 12px; font-size: 1.2em; }
-        p { color: #aaa; margin-bottom: 12px; }
-        .card { background: #1a1a24; border-radius: 12px; padding: 25px; margin: 15px 0; border: 1px solid #2a2a35; }
-        .flow-step { display: flex; gap: 15px; margin: 12px 0; align-items: flex-start; }
-        .step-num { background: linear-gradient(135deg, #ff6b6b, #667eea); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; flex-shrink: 0; }
-        .step-text { color: #ccc; }
-        .btn { display: inline-block; padding: 12px 28px; background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; }
-        .back { display: inline-block; margin: 20px 0; color: #667eea; text-decoration: none; }
-        pre { background: #12121e; padding: 15px; border-radius: 8px; overflow-x: auto; color: #8ab4f8; font-size: 13px; border: 1px solid #2a2a35; }
-        footer { text-align: center; padding: 40px 0; color: #555; font-size: 0.9em; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b12; color: #e0e0e0; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+        h1 { font-size: 2em; margin-bottom: 8px; }
+        h1 span { background: linear-gradient(135deg, #ff6b6b, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #888; margin-bottom: 30px; }
+        .back { display: inline-block; margin-bottom: 20px; color: #667eea; text-decoration: none; font-size: 14px; }
+        .card { background: #14141e; border-radius: 12px; padding: 28px; margin: 16px 0; border: 1px solid #1e1e2e; }
+        .card h2 { color: #fff; font-size: 1.1em; margin-bottom: 12px; }
+        .card p { color: #aaa; font-size: 14px; margin-bottom: 8px; }
+        .card ul { list-style: none; padding: 0; }
+        .card ul li { padding: 10px 0; color: #999; font-size: 14px; border-bottom: 1px solid #1a1a24; display: flex; align-items: flex-start; gap: 10px; }
+        .card ul li:last-child { border-bottom: none; }
+        .scope-id { color: #8ab4f8; font-family: monospace; font-size: 12px; background: #0b0b12; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+        .flow-step { display: flex; gap: 14px; margin: 10px 0; align-items: flex-start; }
+        .step-num { width: 30px; height: 30px; min-width: 30px; background: linear-gradient(135deg, #ff6b6b, #667eea); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; }
+        .step-text { color: #ccc; font-size: 14px; padding-top: 4px; }
+        pre { background: #0b0b12; padding: 14px; border-radius: 8px; color: #8ab4f8; font-size: 13px; border: 1px solid #1e1e2e; overflow-x: auto; }
+        footer { text-align: center; padding: 40px 0; color: #444; font-size: 0.85em; margin-top: 40px; border-top: 1px solid #1a1a24; }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="/index.html" class="back">← Back to Home</a>
-        <h1>TikTok Login Integration</h1>
-        <p>Anime Feels uses TikTok's Login Kit to securely connect your TikTok account with our platform. Below is how the authorization flow works.</p>
+        <a href="/index.html" class="back">← Back to Anime Feels</a>
+        <h1>TikTok <span>Login Integration</span></h1>
+        <p class="subtitle">Anime Feels uses TikTok Login Kit for secure OAuth 2.0 authorization.</p>
 
         <div class="card">
             <h2>Authorization Flow</h2>
-            <div class="flow-step">
-                <div class="step-num">1</div>
-                <div class="step-text">User clicks "Connect TikTok Account" on Anime Feels platform</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">2</div>
-                <div class="step-text">TikTok authorization page opens via OAuth 2.0 redirect</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">3</div>
-                <div class="step-text">User reviews requested permissions: profile info, video upload, video list</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">4</div>
-                <div class="step-text">User authorizes the app — TikTok returns an authorization code</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">5</div>
-                <div class="step-text">Anime Feels exchanges the code for an access token via TikTok API</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">6</div>
-                <div class="step-text">Account connected! User can now publish videos directly from our platform</div>
-            </div>
+            <div class="flow-step"><div class="step-num">1</div><div class="step-text">User clicks <strong>"Connect TikTok Account"</strong> in Anime Feels dashboard</div></div>
+            <div class="flow-step"><div class="step-num">2</div><div class="step-text">TikTok OAuth dialog opens, requesting user authorization</div></div>
+            <div class="flow-step"><div class="step-num">3</div><div class="step-text">User reviews scopes and clicks <strong>Authorize</strong></div></div>
+            <div class="flow-step"><div class="step-num">4</div><div class="step-text">TikTok redirects to our callback endpoint with authorization code</div></div>
+            <div class="flow-step"><div class="step-num">5</div><div class="step-text">Server exchanges code for access token via TikTok API</div></div>
+            <div class="flow-step"><div class="step-num">6</div><div class="step-text">Account connected! Dashboard shows TikTok stats and publishing controls</div></div>
         </div>
 
         <div class="card">
-            <h2>Requested Scopes</h2>
-            <ul style="color: #999; padding-left: 20px;">
-                <li style="margin: 8px 0;"><strong>user.info.basic</strong> — Read profile info (open_id, avatar, display name)</li>
-                <li style="margin: 8px 0;"><strong>user.info.profile</strong> — Read profile link, bio description</li>
-                <li style="margin: 8px 0;"><strong>user.info.stats</strong> — Read user stats (followers, likes, video count)</li>
-                <li style="margin: 8px 0;"><strong>video.list</strong> — Read user's public videos</li>
-                <li style="margin: 8px 0;"><strong>video.upload</strong> — Upload and publish videos to TikTok</li>
+            <h2>Requested Permissions (Scopes)</h2>
+            <ul>
+                <li><span class="scope-id">user.info.basic</span> Read profile info (open_id, avatar, display name) — <em style="color:#777;">Login Kit</em></li>
+                <li><span class="scope-id">user.info.profile</span> Read profile link and bio description</li>
+                <li><span class="scope-id">user.info.stats</span> Read follower count, likes count, video count</li>
+                <li><span class="scope-id">video.list</span> Read user's public video list</li>
+                <li><span class="scope-id">video.upload</span> Upload and publish videos directly to TikTok — <em style="color:#777;">Content Posting API</em></li>
             </ul>
         </div>
 
         <div class="card">
             <h2>OAuth Configuration</h2>
-            <p>Redirect URI for the OAuth callback:</p>
+            <p style="color:#aaa;font-size:13px;">Redirect URI (where TikTok returns the authorization code):</p>
             <pre>https://shenluxu695.github.io/anime-feels/callback</pre>
-            <p style="font-size: 0.9em; color: #777;">This endpoint receives the authorization code and exchanges it for an access token using the TikTok API.</p>
+            <p style="color:#aaa;font-size:13px;margin-top:10px;">The server-side handler exchanges the code for an access token at:</p>
+            <pre>POST https://open.tiktokapis.com/v2/oauth/token/</pre>
         </div>
 
         <footer>

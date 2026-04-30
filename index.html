@@ -4,119 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Feels - AI Anime Short Video Creator</title>
-    <meta name="description" content="Anime Feels is an AI-powered platform for creating, managing, and publishing engaging anime-style short videos to TikTok and YouTube.">
+    <meta name="description" content="Anime Feels is an AI-powered platform for creating emotional anime short videos. Automated scriptwriting, scene generation, voiceover, and TikTok publishing.">
     <meta name="tiktok-developers-site-verification" content="olQG6agNdTEbAN7WsVNo49FltVx7j9EJ">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f13; color: #e0e0e0; line-height: 1.6; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b12; color: #e0e0e0; line-height: 1.6; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
         /* Hero */
-        .hero { text-align: center; padding: 80px 20px 50px; }
-        .hero-icon { width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, #ff6b6b, #667eea); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
-        .hero h1 { font-size: 2.8em; background: linear-gradient(135deg, #ff6b6b, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
-        .hero .subtitle { color: #888; font-size: 1.15em; max-width: 600px; margin: 0 auto; }
-        .hero .badge { display: inline-block; margin-top: 15px; padding: 5px 15px; background: #1a2a3a; color: #60a5fa; border-radius: 20px; font-size: 13px; border: 1px solid #2a4a6a; }
+        .hero { background: linear-gradient(180deg, #0b0b12 0%, #12121e 50%, #1a1a2e 100%); text-align: center; padding: 80px 20px 60px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, rgba(102,126,234,0.08) 0%, transparent 50%); }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-icon { width: 88px; height: 88px; margin: 0 auto 20px; background: linear-gradient(135deg, #ff6b6b, #667eea); border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 8px 32px rgba(102,126,234,0.3); }
+        .hero h1 { font-size: 3em; background: linear-gradient(135deg, #ff6b6b, #667eea, #f093fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; letter-spacing: -1px; }
+        .hero .subtitle { color: #999; font-size: 1.15em; max-width: 600px; margin: 0 auto 20px; }
+        .hero .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+        .badge { padding: 5px 14px; background: rgba(102,126,234,0.12); color: #8ab4f8; border-radius: 20px; font-size: 12px; border: 1px solid rgba(102,126,234,0.2); }
 
-        /* Features */
-        .features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 30px 0; }
-        .feature-card { background: #1a1a24; border-radius: 12px; padding: 24px; border: 1px solid #2a2a35; text-align: center; }
-        .feature-card .icon { font-size: 32px; margin-bottom: 12px; }
-        .feature-card h3 { color: #fff; margin-bottom: 8px; font-size: 15px; }
-        .feature-card p { color: #777; font-size: 13px; }
+        /* Scene Showcase */
+        .showcase { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 40px auto; max-width: 800px; }
+        .showcase img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; border: 1px solid #2a2a35; }
 
-        /* Cards */
-        .card { background: #1a1a24; border-radius: 12px; padding: 30px; margin: 20px 0; border: 1px solid #2a2a35; }
-        .card h2 { color: #fff; margin-bottom: 15px; font-size: 1.4em; }
-        .card p { color: #aaa; margin-bottom: 10px; }
-        .card ul { list-style: none; padding: 0; }
-        .card ul li { padding: 8px 0; color: #999; }
-        .card ul li::before { content: "✦ "; color: #667eea; }
+        /* Sections */
+        .section { margin: 50px 0; }
+        .section h2 { font-size: 1.8em; margin-bottom: 8px; }
+        .section h2 span { background: linear-gradient(135deg, #ff6b6b, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section .desc { color: #888; margin-bottom: 30px; }
 
-        /* How it works */
-        .steps { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; margin: 20px 0; }
-        .step { text-align: center; padding: 15px 8px; }
-        .step .num { width: 36px; height: 36px; margin: 0 auto 8px; background: linear-gradient(135deg, #ff6b6b, #667eea); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
-        .step .label { font-size: 12px; color: #999; }
+        /* Pipeline Steps */
+        .pipeline { display: grid; gap: 16px; }
+        .pipeline-step { background: #14141e; border-radius: 12px; padding: 24px; border: 1px solid #1e1e2e; display: flex; gap: 20px; align-items: flex-start; }
+        .pipeline-step .num { width: 40px; height: 40px; min-width: 40px; background: linear-gradient(135deg, #ff6b6b, #667eea); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; }
+        .pipeline-step .content { flex: 1; }
+        .pipeline-step .content h3 { color: #fff; margin-bottom: 4px; font-size: 16px; }
+        .pipeline-step .content p { color: #888; font-size: 14px; }
+        .pipeline-step .content .tech { display: inline-block; margin-top: 6px; padding: 3px 10px; background: #1a1a2e; color: #8ab4f8; border-radius: 6px; font-size: 11px; }
 
-        /* Links */
-        .nav-links { text-align: center; padding: 30px 0; }
-        .nav-links a { color: #667eea; text-decoration: none; margin: 0 10px; font-size: 14px; }
-        .nav-links a:hover { text-decoration: underline; }
+        /* Features Grid */
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .feature-card { background: #14141e; border-radius: 12px; padding: 22px; border: 1px solid #1e1e2e; }
+        .feature-card .icon { font-size: 24px; margin-bottom: 10px; }
+        .feature-card h3 { color: #fff; font-size: 15px; margin-bottom: 6px; }
+        .feature-card p { color: #888; font-size: 13px; }
 
-        footer { text-align: center; padding: 40px 0; color: #555; font-size: 0.9em; }
-        footer a { color: #555; text-decoration: none; }
+        /* Tech Stack */
+        .tech-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .tech-item { background: #14141e; border-radius: 8px; padding: 16px; border: 1px solid #1e1e2e; display: flex; align-items: center; gap: 12px; }
+        .tech-item .name { color: #fff; font-weight: 600; font-size: 14px; }
+        .tech-item .use { color: #777; font-size: 12px; }
+
+        /* Video Card */
+        .video-card { background: #14141e; border-radius: 12px; overflow: hidden; border: 1px solid #1e1e2e; }
+        .video-card video, .video-card .video-placeholder { width: 100%; display: block; }
+        .video-info { padding: 16px; }
+        .video-info h3 { color: #fff; font-size: 15px; }
+        .video-info p { color: #888; font-size: 13px; margin-top: 4px; }
+
+        /* Nav */
+        .nav-links { text-align: center; padding: 30px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .nav-links a { color: #667eea; text-decoration: none; padding: 8px 16px; background: #14141e; border-radius: 8px; font-size: 13px; border: 1px solid #1e1e2e; }
+        .nav-links a:hover { border-color: #667eea; }
+
+        footer { text-align: center; padding: 50px 0; color: #444; font-size: 0.85em; border-top: 1px solid #1a1a24; margin-top: 50px; }
 
         @media (max-width: 700px) {
-            .features { grid-template-columns: 1fr; }
-            .steps { grid-template-columns: 1fr; gap: 0; }
             .hero h1 { font-size: 2em; }
+            .showcase { grid-template-columns: repeat(2, 1fr); }
+            .features { grid-template-columns: 1fr; }
+            .tech-stack { grid-template-columns: 1fr; }
+            .pipeline-step { flex-direction: column; }
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <div class="hero-icon">🎬</div>
-        <h1>Anime Feels</h1>
-        <p class="subtitle">AI-powered platform for creating and publishing emotional anime short videos to TikTok &amp; YouTube Shorts</p>
-        <div class="badge">⚡ Integrated with TikTok Content Posting API</div>
+        <div class="hero-content">
+            <div class="hero-icon">🎬</div>
+            <h1>Anime Feels</h1>
+            <p class="subtitle">AI-Powered Anime Short Video Production Pipeline<br>From Script to TikTok in Minutes</p>
+            <div class="badges">
+                <span class="badge">🤖 AI Script</span>
+                <span class="badge">🎨 AI Scene</span>
+                <span class="badge">🗣️ AI Voice</span>
+                <span class="badge">🎵 AI Music</span>
+                <span class="badge">📤 Auto Publish</span>
+            </div>
+        </div>
     </div>
 
     <div class="container">
-        <div class="features">
-            <div class="feature-card">
-                <div class="icon">🤖</div>
-                <h3>AI Scriptwriting</h3>
-                <p>DeepSeek-powered story generation with emotional narratives and engaging plots</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">🎨</div>
-                <h3>AI Scene Generation</h3>
-                <p>Stunning anime-style visuals powered by Luma Photon with consistent character design</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">🗣️</div>
-                <h3>Voiceover &amp; BGM</h3>
-                <p>ElevenLabs emotional narration with FluidSynth-generated background music</p>
+        <!-- Scene Showcase -->
+        <div class="showcase">
+            <img src="/scenes/scene_01.jpg" alt="Anime scene 1" loading="lazy">
+            <img src="/scenes/scene_02.jpg" alt="Anime scene 2" loading="lazy">
+            <img src="/scenes/scene_03.jpg" alt="Anime scene 3" loading="lazy">
+            <img src="/scenes/scene_04.jpg" alt="Anime scene 4" loading="lazy">
+        </div>
+
+        <!-- Pipeline -->
+        <div class="section">
+            <h2>Production <span>Pipeline</span></h2>
+            <p class="desc">End-to-end automated anime short video creation in 6 steps.</p>
+            <div class="pipeline">
+                <div class="pipeline-step">
+                    <div class="num">1</div>
+                    <div class="content">
+                        <h3>AI Scriptwriting</h3>
+                        <p>DeepSeek generates emotional anime story scripts with scene-by-scene breakdown, dialogue, and visual prompts.</p>
+                        <span class="tech">Powered by DeepSeek V4 Flash</span>
+                    </div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="num">2</div>
+                    <div class="content">
+                        <h3>Scene Generation</h3>
+                        <p>AI creates anime-style images for each scene based on detailed prompts, maintaining character consistency.</p>
+                        <span class="tech">Powered by Luma Photon + Character Reference</span>
+                    </div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="num">3</div>
+                    <div class="content">
+                        <h3>Voiceover Narration</h3>
+                        <p>Emotional voice dubbing with multiple character voices, synced to script dialogue timing.</p>
+                        <span class="tech">Powered by ElevenLabs TTS</span>
+                    </div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="num">4</div>
+                    <div class="content">
+                        <h3>Background Music</h3>
+                        <p>Custom BGM generated from real instrument SoundFont libraries, matched to scene emotion.</p>
+                        <span class="tech">Powered by FluidSynth + FluidR3_GM</span>
+                    </div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="num">5</div>
+                    <div class="content">
+                        <h3>Video Compilation</h3>
+                        <p>FFmpeg assembles scenes, audio, subtitles, and transitions into a polished short-form video.</p>
+                        <span class="tech">FFmpeg + ASS Subtitles + Loudnorm Audio</span>
+                    </div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="num">6</div>
+                    <div class="content">
+                        <h3>Publish to TikTok</h3>
+                        <p>Directly upload and publish videos to TikTok via Content Posting API with customizable captions and settings.</p>
+                        <span class="tech">TikTok Content Posting API (Direct Post)</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="card">
-            <h2>How It Works</h2>
-            <div class="steps">
-                <div class="step"><div class="num">1</div><div class="label">Generate Script</div></div>
-                <div class="step"><div class="num">2</div><div class="label">Create Scenes</div></div>
-                <div class="step"><div class="num">3</div><div class="label">Add Audio</div></div>
-                <div class="step"><div class="num">4</div><div class="label">Compile Video</div></div>
-                <div class="step"><div class="num">5</div><div class="label">Publish</div></div>
+        <!-- Features -->
+        <div class="section">
+            <h2>Key <span>Features</span></h2>
+            <p class="desc">What makes Anime Feels different.</p>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3>Fully Automated</h3>
+                    <p>One-click from concept to published video. No manual editing required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎯</div>
+                    <h3>Batch Production</h3>
+                    <p>Generate multiple episodes per day with consistent quality and style.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Quality Control</h3>
+                    <p>8-point professional review system: color grading, timing, audio normalization, SEO metadata.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔗</div>
+                    <h3>TikTok Integration</h3>
+                    <p>Secure OAuth 2.0 authorization + Direct Post publishing to user TikTok accounts.</p>
+                </div>
             </div>
         </div>
 
-        <div class="card">
-            <h2>Why Anime Feels</h2>
-            <ul>
-                <li>Fully automated content creation pipeline — from script to publish</li>
-                <li>Direct TikTok publishing via Content Posting API (Direct Post)</li>
-                <li>Secure OAuth 2.0 authorization with TikTok Login Kit</li>
-                <li>Quality control with 8-point professional review system</li>
-                <li>Batch production — generate multiple videos per day</li>
-            </ul>
+        <!-- Tech Stack -->
+        <div class="section">
+            <h2>Technology <span>Stack</span></h2>
+            <p class="desc">Built on industry-leading AI and media tools.</p>
+            <div class="tech-stack">
+                <div class="tech-item"><div><div class="name">DeepSeek V4 Flash</div><div class="use">Scriptwriting &amp; Prompt Generation</div></div></div>
+                <div class="tech-item"><div><div class="name">Luma Photon</div><div class="use">Anime Scene Image Generation</div></div></div>
+                <div class="tech-item"><div><div class="name">ElevenLabs</div><div class="use">Emotional Voice Narration</div></div></div>
+                <div class="tech-item"><div><div class="name">TikTok Content API</div><div class="use">Video Upload &amp; Publishing</div></div></div>
+                <div class="tech-item"><div><div class="name">FFmpeg</div><div class="use">Video Assembly &amp; Encoding</div></div></div>
+                <div class="tech-item"><div><div class="name">FluidSynth</div><div class="use">Background Music Generation</div></div></div>
+            </div>
         </div>
 
+        <!-- Output Showcase -->
+        <div class="section">
+            <h2>Sample <span>Output</span></h2>
+            <p class="desc">Scene stills from recently produced episodes.</p>
+            <div class="showcase" style="grid-template-columns: repeat(4, 1fr);">
+                <img src="/scenes/scene_05.jpg" alt="Scene 5" loading="lazy">
+                <img src="/scenes/scene_06.jpg" alt="Scene 6" loading="lazy">
+                <img src="/scenes/scene_07.jpg" alt="Scene 7" loading="lazy">
+                <img src="/scenes/scene_08.jpg" alt="Scene 8" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Navigation -->
         <div class="nav-links">
-            <a href="/login.html">🔐 Login Integration</a>
-            <a href="/demo.html">🎬 Demo Dashboard</a>
+            <a href="/login.html">🔐 TikTok Login Integration</a>
+            <a href="/demo.html">🎬 Dashboard Demo</a>
             <a href="/callback.html">🔄 OAuth Callback</a>
-            <a href="/webhook.html">📡 Webhooks</a>
+            <a href="/webhook.html">📡 Webhook Setup</a>
             <a href="/terms.html">📜 Terms of Service</a>
             <a href="/privacy.html">🔒 Privacy Policy</a>
         </div>
 
         <footer>
-            <p>&copy; 2026 Anime Feels. All rights reserved. | <a href="mailto:shenluxu@gmail.com">Contact</a></p>
+            <p>&copy; 2026 Anime Feels. All rights reserved. | <a href="mailto:shenluxu@gmail.com" style="color:#555;">Contact</a></p>
         </footer>
     </div>
 </body>
