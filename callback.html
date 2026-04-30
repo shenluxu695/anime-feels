@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok OAuth Callback - Anime Feels</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f13; color: #e0e0e0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .card { background: #1a1a24; border-radius: 16px; padding: 40px; max-width: 500px; width: 90%; border: 1px solid #2a2a35; text-align: center; }
+        .icon { font-size: 48px; margin-bottom: 15px; }
+        h1 { font-size: 1.5em; margin-bottom: 10px; }
+        p { color: #aaa; margin-bottom: 8px; font-size: 14px; line-height: 1.6; }
+        .status { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 13px; margin: 15px 0; }
+        .loading { background: #1a2a3a; color: #60a5fa; }
+        .success { background: #1a3a1a; color: #4ade80; }
+        .error { background: #3a1a1a; color: #f87171; }
+        .back { margin-top: 20px; display: inline-block; color: #667eea; text-decoration: none; }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+    <div class="card">
+        <div class="icon">🔄</div>
+        <h1>TikTok Authorization</h1>
+        <p>Completing your account connection with TikTok.</p>
+        <div class="status loading">Processing authorization...</div>
+        <p style="font-size: 12px; color: #666;">You'll be redirected back to Anime Feels once authorization is complete.</p>
+        <a href="/index.html" class="back">← Back to Anime Feels</a>
+    </div>
+</body>
+</html>
