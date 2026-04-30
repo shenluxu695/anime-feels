@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Anime Feels</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f13; color: #e0e0e0; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back { display: inline-block; margin: 20px 0; color: #667eea; text-decoration: none; }
+        h1 { font-size: 2em; margin: 10px 0 5px; background: linear-gradient(135deg, #ff6b6b, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #888; margin-bottom: 25px; }
+
+        /* App mockup */
+        .app-mockup { background: #1a1a24; border-radius: 16px; border: 1px solid #2a2a35; overflow: hidden; margin: 20px 0; }
+        .app-header { background: linear-gradient(135deg, #1a1a2e, #16213e); padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2a35; }
+        .app-title { font-weight: bold; color: #fff; font-size: 18px; }
+        .app-title span { color: #667eea; }
+        .user-badge { display: flex; align-items: center; gap: 10px; background: #2a2a35; padding: 6px 14px 6px 6px; border-radius: 20px; }
+        .avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #ff6b6b, #667eea); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; }
+        .connected { color: #4ade80; font-size: 12px; }
+        .app-body { padding: 25px; }
+
+        /* Video card grid */
+        .video-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0; }
+        .video-card { background: #12121e; border-radius: 10px; overflow: hidden; border: 1px solid #2a2a35; }
+        .video-thumb { width: 100%; aspect-ratio: 9/16; background: linear-gradient(135deg, #2a1a3e, #1a2a3e); display: flex; align-items: center; justify-content: center; color: #555; font-size: 24px; position: relative; }
+        .video-thumb .play-icon { position: absolute; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .video-info { padding: 10px; }
+        .video-title { font-size: 13px; color: #ccc; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .video-meta { font-size: 11px; color: #666; }
+
+        /* Publish section */
+        .publish-section { background: #12121e; border-radius: 12px; padding: 20px; margin: 20px 0; border: 1px solid #2a2a35; }
+        .publish-section h3 { color: #fff; margin-bottom: 15px; font-size: 16px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; color: #999; margin-bottom: 5px; font-size: 13px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 14px; background: #1a1a24; border: 1px solid #2a2a35; border-radius: 8px; color: #e0e0e0; font-size: 14px; }
+        .form-group textarea { min-height: 80px; resize: vertical; }
+        .btn-row { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-primary { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff; padding: 10px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .btn-secondary { background: #2a2a35; color: #ccc; padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; }
+
+        /* Schedule table */
+        .schedule-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .schedule-table th, .schedule-table td { padding: 10px; text-align: left; border-bottom: 1px solid #2a2a35; font-size: 13px; }
+        .schedule-table th { color: #888; font-weight: normal; }
+        .schedule-table td { color: #ccc; }
+        .status-badge { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; }
+        .status-published { background: #1a3a1a; color: #4ade80; }
+        .status-scheduled { background: #1a2a3a; color: #60a5fa; }
+        .status-draft { background: #2a2a1a; color: #facc15; }
+
+        footer { text-align: center; padding: 40px 0; color: #555; font-size: 0.9em; }
+
+        @media (max-width: 600px) {
+            .video-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/index.html" class="back">← Back to Home</a>
+        <h1>Anime Feels — Dashboard Demo</h1>
+        <p class="subtitle">AI-powered anime short video creation & publishing platform</p>
+
+        <!-- App Mockup -->
+        <div class="app-mockup">
+            <div class="app-header">
+                <div class="app-title"><span>Anime</span>Feels</div>
+                <div class="user-badge">
+                    <div class="avatar">U</div>
+                    <span style="color: #ccc; font-size: 13px;">@anime_creator</span>
+                    <span class="connected">● Connected</span>
+                </div>
+            </div>
+
+            <div class="app-body">
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <div class="play-icon">▶</div>
+                            🎬
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Midnight Whispers</div>
+                            <div class="video-meta">1.2K views • 3h ago</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <div class="play-icon">▶</div>
+                            🌸
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Fateful Encounter</div>
+                            <div class="video-meta">856 views • 1d ago</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <div class="play-icon">▶</div>
+                            ✨
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Silent Desire</div>
+                            <div class="video-meta">2.4K views • 2d ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publish to TikTok -->
+                <div class="publish-section">
+                    <h3>📤 Publish New Video to TikTok</h3>
+                    <div class="form-group">
+                        <label>Video Title</label>
+                        <input type="text" value="Moonlight Gaze — Anime Feels" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Caption</label>
+                        <textarea disabled>Experience the magic of anime. #anime #shorts #animeedit #emotional</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Privacy Setting</label>
+                        <select disabled>
+                            <option>Public</option>
+                            <option>Friends</option>
+                            <option>Private</option>
+                        </select>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn-primary" disabled>Publish to TikTok</button>
+                        <button class="btn-secondary" disabled>Save as Draft</button>
+                    </div>
+                </div>
+
+                <!-- Publishing Schedule -->
+                <div class="publish-section">
+                    <h3>📅 Publishing Schedule</h3>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr><th>Video</th><th>Platform</th><th>Scheduled</th><th>Status</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Moonlight Gaze</td>
+                                <td>TikTok</td>
+                                <td>Apr 30, 2026</td>
+                                <td><span class="status-badge status-scheduled">Scheduled</span></td>
+                            </tr>
+                            <tr>
+                                <td>Forbidden Love</td>
+                                <td>TikTok</td>
+                                <td>May 1, 2026</td>
+                                <td><span class="status-badge status-draft">Draft</span></td>
+                            </tr>
+                            <tr>
+                                <td>Bedroom Eyes</td>
+                                <td>TikTok</td>
+                                <td>Apr 29, 2026</td>
+                                <td><span class="status-badge status-published">Published</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration Flow Explanation -->
+        <div class="publish-section" style="background: #1a1a24;">
+            <h3>🔗 TikTok Integration Flow</h3>
+            <ol style="color: #999; padding-left: 20px;">
+                <li style="margin: 8px 0;"><strong>Login:</strong> User authorizes via TikTok Login Kit → OAuth 2.0 access token obtained</li>
+                <li style="margin: 8px 0;"><strong>Create:</strong> AI generates anime video content (scenes, voiceover, caption)</li>
+                <li style="margin: 8px 0;"><strong>Publish:</strong> Content Posting API uploads video directly to user's TikTok account</li>
+                <li style="margin: 8px 0;"><strong>Monitor:</strong> View published video stats (likes, views, comments) within dashboard</li>
+            </ol>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Anime Feels. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
