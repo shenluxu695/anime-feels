@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Integration Demo — Anime Feels</title>
+<link rel="icon" type="image/svg+xml" href="https://139.180.196.173.nip.io/favicon.svg">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: #0b0b12; color: #e0e0e0; }
+.header { background: linear-gradient(135deg,#ff6b6b,#667eea); padding: 20px 30px; display: flex; align-items: center; gap: 15px; }
+.header img { width: 40px; height: 40px; border-radius: 8px; }
+.header h1 { font-size: 20px; color: #fff; }
+.header span { color: rgba(255,255,255,0.7); font-size: 13px; }
+.steps { max-width: 800px; margin: 0 auto; padding: 30px 20px; }
+.step { background: #14141e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 24px; margin-bottom: 20px; position: relative; }
+.step-num { position: absolute; top: -10px; left: 20px; background: linear-gradient(135deg,#ff6b6b,#667eea); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold; }
+.step h2 { font-size: 16px; color: #fff; margin-bottom: 12px; margin-top: 5px; }
+.step p { color: #999; font-size: 13px; line-height: 1.7; }
+.badge { display: inline-block; background: #1a1a2e; color: #667eea; padding: 3px 10px; border-radius: 6px; font-size: 11px; margin: 4px; }
+.mock-browser { background: #0d0d16; border: 1px solid #1e1e2e; border-radius: 8px; margin: 15px 0; overflow: hidden; }
+.mock-browser .bar { background: #16161f; padding: 8px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #1e1e2e; }
+.mock-browser .dot { width: 10px; height: 10px; border-radius: 50%; }
+.mock-browser .url { background: #1a1a24; padding: 6px 12px; border-radius: 6px; font-size: 11px; color: #888; flex: 1; }
+.mock-browser .content { padding: 20px; min-height: 200px; }
+.flow-arrow { text-align: center; font-size: 24px; color: #444; margin: 8px 0; }
+.screenshot { width: 100%; border-radius: 6px; border: 1px solid #1e1e2e; }
+code { background: #1a1a24; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #ff6b6b; }
+.btn { display: inline-block; background: linear-gradient(135deg,#ff6b6b,#667eea); color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; margin: 8px 0; }
+.tag { display: inline-block; background: #1a2e1a; color: #3fb950; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin: 2px; }
+.scopes { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.scope { background: #1e1e2e; border: 1px solid #2e2e3e; padding: 6px 12px; border-radius: 6px; font-size: 12px; color: #ccc; }
+.scope.used { border-color: #667eea; background: #1a1a3e; color: #88aaff; }
+footer { text-align: center; padding: 40px; color: #444; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="https://139.180.196.173.nip.io/favicon.svg" alt="AF">
+  <div>
+    <h1>Anime Feels — TikTok Integration Demo</h1>
+    <span>Developer Application Review Walkthrough</span>
+  </div>
+</div>
+
+<div class="steps">
+
+<!-- Step 1 -->
+<div class="step">
+  <div class="step-num">1</div>
+  <h2>Open Anime Feels Website</h2>
+  <p>User navigates to <strong>Anime Feels</strong>, an AI-powered anime short video creator platform.</p>
+  
+  <div class="mock-browser">
+    <div class="bar">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="url">https://shenluxu695.github.io/anime-feels/</span>
+    </div>
+    <div class="content" style="text-align:center">
+      <img src="https://139.180.196.173.nip.io/favicon.svg" style="width:48px;height:48px;border-radius:10px;margin-bottom:10px">
+      <h3 style="color:#fff;font-size:18px">Anime Feels</h3>
+      <p style="color:#888;font-size:13px">AI-Powered Anime Shorts Creator</p>
+      <div style="margin-top:20px">
+        <span class="btn">🎬 Create Anime Short</span>
+        <span class="btn" style="background:#1e1e2e;border:1px solid #333">🔗 Connect TikTok</span>
+      </div>
+      <p style="color:#555;font-size:12px;margin-top:10px">Login Kit · Content Posting API</p>
+    </div>
+  </div>
+  <p><span class="tag">scope: user.info.basic</span> <span class="tag">scope: video.upload</span></p>
+</div>
+
+<div class="flow-arrow">⬇</div>
+
+<!-- Step 2 -->
+<div class="step">
+  <div class="step-num">2</div>
+  <h2>User Clicks "Connect TikTok" → OAuth Authorization</h2>
+  <p>TikTok Login Kit OAuth flow initiated. User is redirected to TikTok's authorization page.</p>
+  
+  <div class="mock-browser">
+    <div class="bar">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="url">https://www.tiktok.com/v2/auth/authorize/...</span>
+    </div>
+    <div class="content" style="text-align:center">
+      <div style="font-size:40px;margin-bottom:10px">🎵</div>
+      <h3 style="color:#fff;font-size:16px">Authorize Anime Feels</h3>
+      <p style="color:#888;font-size:13px">Anime Feels wants to:</p>
+      <div class="scopes" style="justify-content:center">
+        <div class="scope used">✅ View your TikTok profile info</div>
+        <div class="scope used">✅ Post videos to your TikTok account</div>
+      </div>
+      <div style="margin-top:15px">
+        <span class="btn" style="background:#fe2c55">Allow</span>
+        <span class="btn" style="background:transparent;border:1px solid #333">Cancel</span>
+      </div>
+    </div>
+  </div>
+  <p><span class="tag">Login Kit activated</span> <span class="tag">Scope: user.info.basic</span></p>
+</div>
+
+<div class="flow-arrow">⬇</div>
+
+<!-- Step 3 -->
+<div class="step">
+  <div class="step-num">3</div>
+  <h2>Authorization Callback → Token Received</h2>
+  <p>TikTok redirects back to Anime Feels with authorization code. Backend exchanges code for access token.</p>
+  
+  <div class="mock-browser">
+    <div class="bar">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="url">https://shenluxu695.github.io/anime-feels/callback.html</span>
+    </div>
+    <div class="content" style="text-align:center">
+      <div style="font-size:40px;margin-bottom:10px">✅</div>
+      <h3 style="color:#3fb950;font-size:16px">TikTok Connected Successfully!</h3>
+      <p style="color:#888;font-size:13px">Your TikTok account is now linked to Anime Feels.</p>
+      <div style="background:#1a1a24;border-radius:6px;padding:12px;margin:12px 0;text-align:left">
+        <code>✓ access_token received</code><br>
+        <code>✓ refresh_token stored</code><br>
+        <code>✓ scopes: user.info.basic, video.upload</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flow-arrow">⬇</div>
+
+<!-- Step 4 -->
+<div class="step">
+  <div class="step-num">4</div>
+  <h2>Content Posting API — Publish Video</h2>
+  <p>User selects an AI-generated anime short from their dashboard and clicks "Post to TikTok".</p>
+  
+  <div class="mock-browser">
+    <div class="bar">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="url">https://shenluxu695.github.io/anime-feels/production.html</span>
+    </div>
+    <div class="content">
+      <div style="display:flex;gap:12px;margin-bottom:12px">
+        <div style="width:80px;height:140px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#555;border:2px solid #667eea">▶ Demo<br>Video</div>
+        <div style="flex:1">
+          <h4 style="color:#fff;font-size:14px">The Janitor Everyone Laughed At</h4>
+          <p style="color:#888;font-size:12px">46s · Anime Cinematic · Identity Reveal</p>
+          <div style="margin-top:10px">
+            <span class="btn" style="padding:6px 16px;font-size:12px">📤 Post to TikTok</span>
+          </div>
+        </div>
+      </div>
+      <div style="background:#1a1a24;border-radius:6px;padding:12px;font-size:12px">
+        <div style="color:#888">TikTok Content Posting API Request:</div>
+        <code style="display:block;margin-top:6px;font-size:11px;line-height:1.6">
+POST https://open-api.tiktok.com/video/upload/<br>
+Authorization: Bearer act_xxx...<br>
+video: anime_short_demo.mp4<br>
+title: "The Janitor Everyone Laughed At..."
+        </code>
+      </div>
+    </div>
+  </div>
+  <p><span class="tag">Content Posting API</span> <span class="tag">Scope: video.upload</span></p>
+</div>
+
+<div class="flow-arrow">⬇</div>
+
+<!-- Step 5 -->
+<div class="step">
+  <div class="step-num">5</div>
+  <h2>Video Published to TikTok ✅</h2>
+  <p>Video is successfully uploaded via TikTok Content Posting API.</p>
+  
+  <div class="mock-browser">
+    <div class="bar">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="url">https://www.tiktok.com/@animefeels/video/...</span>
+    </div>
+    <div class="content" style="text-align:center">
+      <div style="font-size:40px;margin-bottom:10px">🎉</div>
+      <h3 style="color:#3fb950;font-size:16px">Published to TikTok!</h3>
+      <p style="color:#888;font-size:13px">Your anime short is now live on TikTok.</p>
+      <div style="background:#1a1a24;border-radius:6px;padding:12px;margin:10px 0;text-align:left">
+        <code>✓ video_id: 7432xxxxxx</code><br>
+        <code>✓ status: published</code><br>
+        <code>✓ URL: https://www.tiktok.com/@animefeels/v/...</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="step" style="border-color:#3fb950">
+  <div class="step-num" style="background:#3fb950">✓</div>
+  <h2 style="color:#3fb950">End-to-End Flow Complete ✅</h2>
+  
+  <h4 style="color:#fff;margin:12px 0 8px">Products Used:</h4>
+  <div class="scopes">
+    <div class="scope used">Login Kit</div>
+    <div class="scope used">Content Posting API</div>
+  </div>
+  
+  <h4 style="color:#fff;margin:12px 0 8px">Scopes Used:</h4>
+  <div class="scopes">
+    <div class="scope used">user.info.basic</div>
+    <div class="scope used">video.upload</div>
+  </div>
+
+  <h4 style="color:#fff;margin:12px 0 8px">Flow Summary:</h4>
+  <p style="font-size:13px;color:#999;line-height:1.8">
+  1. User visits <code>anime-feels</code> website<br>
+  2. Clicks "Connect TikTok" → TikTok OAuth authorization<br>
+  3. User grants <code>user.info.basic</code> and <code>video.upload</code> scopes<br>
+  4. OAuth callback → access token received and stored<br>
+  5. User selects AI-generated anime short video<br>
+  6. Clicks "Post to TikTok" → Content Posting API called<br>
+  7. Video successfully published to TikTok account
+  </p>
+
+  <h4 style="color:#fff;margin:12px 0 8px">Website URLs:</h4>
+  <p style="font-size:12px;color:#888">
+  Main: <code>https://shenluxu695.github.io/anime-feels/</code><br>
+  Terms: <code>https://shenluxu695.github.io/anime-feels/terms.html</code><br>
+  Privacy: <code>https://shenluxu695.github.io/anime-feels/privacy.html</code><br>
+  Callback: <code>https://shenluxu695.github.io/anime-feels/callback.html</code>
+  </p>
+</div>
+
+</div>
+
+<footer>
+  Anime Feels — TikTok Developer Application Review Demo<br>
+  Generated 2026-05-08 | Version v2.0-golden-pre
+</footer>
+
+</body>
+</html>
