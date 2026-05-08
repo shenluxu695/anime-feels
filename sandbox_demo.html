@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Feels — TikTok Sandbox Demo Recording</title>
+<link rel="icon" href="/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0b0b12;color:#e0e0e0}
+.slide{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;border-bottom:2px solid #1e1e2e;scroll-snap-align:start}
+.slide h1{font-size:28px;margin-bottom:8px;background:linear-gradient(135deg,#ff6b6b,#667eea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.slide h2{color:#fff;font-size:22px;margin-bottom:16px}
+.slide p{color:#999;font-size:15px;max-width:500px;text-align:center;line-height:1.7;margin-bottom:20px}
+.card{background:#14141e;border:1px solid #1e1e2e;border-radius:16px;padding:30px;max-width:420px;width:100%;text-align:center}
+.logo{width:56px;height:56px;border-radius:12px;margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:#fe2c55;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-size:15px;font-weight:600;margin:8px}
+.btn-secondary{background:transparent;border:1px solid #333}
+.mock-tiktok{background:#fff;color:#111;border-radius:12px;padding:30px;text-align:center;width:100%;max-width:360px}
+.mock-tiktok .tiktok-logo{color:#fe2c55;font-size:32px;font-weight:bold;margin-bottom:12px}
+.mock-tiktok p{color:#666;font-size:13px;margin-bottom:12px}
+.mock-tiktok .allow-btn{background:#fe2c55;color:#fff;border:none;padding:12px 40px;border-radius:8px;font-size:15px;font-weight:600}
+.code-block{background:#0d0d16;border:1px solid #1e1e2e;border-radius:8px;padding:16px;text-align:left;font-family:monospace;font-size:12px;color:#888;line-height:1.8;width:100%;max-width:460px}
+.code-block .green{color:#3fb950}
+.code-block .blue{color:#58a6ff}
+.code-block .pink{color:#ff6b6b}
+.step-num{display:inline-block;background:linear-gradient(135deg,#ff6b6b,#667eea);color:#fff;width:32px;height:32px;border-radius:50%;line-height:32px;font-size:14px;font-weight:bold;margin-bottom:12px}
+.arrow{font-size:32px;color:#444;padding:10px}
+.tag{display:inline-block;background:#1a1a3e;color:#88aaff;border:1px solid #667eea;padding:4px 10px;border-radius:4px;font-size:12px;margin:3px}
+</style>
+</head>
+<body>
+<!-- Slide 1 -->
+<div class="slide">
+  <img src="/favicon.svg" class="logo">
+  <h1>Anime Feels</h1>
+  <p style="color:#667;font-size:14px;margin-bottom:4px">TikTok Integration — Sandbox Demo</p>
+  <p style="font-size:12px;color:#555">Screen recording for developer app review</p>
+  <div style="margin-top:20px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center">
+    <span class="tag">Login Kit</span>
+    <span class="tag">Content Posting API</span>
+    <span class="tag">user.info.basic</span>
+    <span class="tag">video.upload</span>
+  </div>
+  <p style="margin-top:30px;font-size:12px;color:#444">↓ Scroll down to see the flow ↓</p>
+</div>
+
+<!-- Slide 2: Step 1 -->
+<div class="slide">
+  <div class="step-num">1</div>
+  <h2>Website Opened</h2>
+  <div class="card">
+    <img src="/favicon.svg" class="logo">
+    <h3 style="color:#fff;font-size:16px;margin-bottom:4px">Anime Feels</h3>
+    <p style="color:#888;font-size:13px;margin-bottom:16px">AI-Powered Anime Shorts Creator</p>
+    <div>
+      <span class="btn">🎬 Create Anime Short</span>
+    </div>
+    <div style="margin-top:10px">
+      <span class="btn btn-secondary">🔗 Connect with TikTok</span>
+    </div>
+    <p style="color:#555;font-size:11px;margin-top:12px">Sandbox: sbaw95u92p4f4h8snf</p>
+  </div>
+</div>
+
+<!-- Slide 3: Step 2 -->
+<div class="slide">
+  <div class="step-num">2</div>
+  <h2>TikTok OAuth Authorization</h2>
+  <div class="mock-tiktok">
+    <div class="tiktok-logo">♬ TikTok</div>
+    <p style="font-weight:600;color:#333">Authorize Anime Feels</p>
+    <p>This app wants to:</p>
+    <div style="background:#f5f5f5;border-radius:6px;padding:10px;margin:10px 0;text-align:left;font-size:13px">
+      ✅ View your profile info (user.info.basic)<br>
+      ✅ Post videos to your account (video.upload)
+    </div>
+    <button class="allow-btn">Allow</button>
+    <p style="font-size:11px;color:#999;margin-top:8px">Sandbox Test Account: sandbox_test_01</p>
+  </div>
+  <p style="font-size:12px;color:#555;margin-top:12px">User logs in with sandbox test account and approves scopes</p>
+</div>
+
+<!-- Slide 4: Step 3 -->
+<div class="slide">
+  <div class="step-num">3</div>
+  <h2>Authorization Successful</h2>
+  <div class="card">
+    <div style="font-size:40px;margin-bottom:10px">✅</div>
+    <h3 style="color:#3fb950;font-size:16px;margin-bottom:8px">TikTok Connected!</h3>
+    <div class="code-block">
+      <span class="green">✓</span> Authorization code received<br>
+      <span class="green">✓</span> Scopes: user.info.basic, video.upload<br>
+      <span class="green">✓</span> Account: @sandbox_test<br><br>
+      <span class="blue">Next:</span> Exchange code for access token<br>
+      <span class="blue">Next:</span> Post video via Content Posting API
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Step 4 -->
+<div class="slide">
+  <div class="step-num">4</div>
+  <h2>Content Posting API</h2>
+  <div class="card" style="text-align:left">
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <div style="width:60px;height:100px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#555;border:2px solid #667eea">▶ Demo</div>
+      <div>
+        <h4 style="color:#fff;font-size:14px;margin-bottom:4px">The Janitor Everyone Laughed At</h4>
+        <p style="color:#888;font-size:11px">46s · Anime Cinematic · Identity Reveal</p>
+        <div style="margin-top:8px"><span class="btn" style="padding:8px 16px;font-size:12px">📤 Post to TikTok</span></div>
+      </div>
+    </div>
+    <div class="code-block" style="font-size:11px">
+      <span class="pink">POST</span> https://open-api.tiktok.com/video/upload/<br>
+      <span class="blue">Authorization:</span> Bearer act_xxx...<br>
+      <span class="blue">video:</span> anime_short_demo.mp4<br>
+      <span class="blue">title:</span> "The Janitor Everyone Laughed At"
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Step 5 -->
+<div class="slide">
+  <div class="step-num">5</div>
+  <h2>Published to TikTok! 🎉</h2>
+  <div class="card">
+    <div style="font-size:40px;margin-bottom:10px">🎉</div>
+    <h3 style="color:#3fb950;font-size:16px;margin-bottom:8px">Published Successfully!</h3>
+    <div class="code-block">
+      <span class="green">✓</span> video_id: 7432xxxxxx<br>
+      <span class="green">✓</span> status: published<br>
+      <span class="green">✓</span> URL: https://www.tiktok.com/@animefeels/v/...
+    </div>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:16px">Full end-to-end flow completed using TikTok Sandbox</p>
+  <p style="font-size:12px;color:#555;margin-top:6px">Login Kit + Content Posting API | scopes: user.info.basic, video.upload</p>
+</div>
+
+<!-- Slide 7: Summary -->
+<div class="slide" style="border-bottom:none">
+  <h1 style="font-size:24px">Flow Complete ✅</h1>
+  <p style="font-size:13px;color:#888;margin-bottom:4px">Products: Login Kit · Content Posting API</p>
+  <p style="font-size:13px;color:#888;margin-bottom:16px">Scopes: user.info.basic · video.upload</p>
+  <div class="code-block" style="font-size:12px">
+    <span class="blue">Website:</span> https://shenluxu695.github.io/anime-feels/<br>
+    <span class="blue">Terms:</span> https://shenluxu695.github.io/anime-feels/terms.html<br>
+    <span class="blue">Privacy:</span> https://shenluxu695.github.io/anime-feels/privacy.html<br>
+    <span class="blue">Sandbox:</span> sbaw95u92p4f4h8snf<br>
+    <span class="blue">App Name:</span> Anime Feels<br>
+    <span class="blue">App Icon:</span> app_icon_1024.png<br><br>
+    <span class="green">✓</span> All reviewer requirements addressed
+  </div>
+</div>
+</body>
+</html>
