@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Feels — TikTok Sandbox Demo</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0b0b12; color:#e0e0e0; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
+.card { background:#14141e; border:1px solid #1e1e2e; border-radius:16px; padding:40px; max-width:460px; width:100%; text-align:center; }
+.card img { width:56px; height:56px; border-radius:12px; margin-bottom:12px; }
+.card h1 { font-size:20px; color:#fff; margin-bottom:4px; }
+.card p { color:#888; font-size:13px; margin-bottom:20px; }
+.btn-tiktok { display:inline-flex; align-items:center; gap:10px; background:#fe2c55; color:#fff; padding:14px 28px; border-radius:8px; text-decoration:none; font-size:15px; font-weight:600; transition:opacity 0.2s; }
+.btn-tiktok:hover { opacity:0.9; }
+.info { background:#1a1a24; border-radius:8px; padding:12px; margin:16px 0; text-align:left; font-size:12px; color:#888; line-height:1.7; }
+.info strong { color:#ccc; }
+code { color:#ff6b6b; }
+.tag { display:inline-block; background:#1a1a3e; color:#88aaff; border:1px solid #667eea; padding:3px 8px; border-radius:4px; font-size:11px; margin:2px; }
+.status { margin-top:15px; padding:10px; border-radius:6px; font-size:13px; display:none; }
+.status.success { display:block; background:#1a2e1a; border:1px solid #3fb950; color:#3fb950; }
+.status.error { display:block; background:#2e1a1a; border:1px solid #ff5f57; color:#ff5f57; }
+</style>
+</head>
+<body>
+<div class="card">
+  <img src="/favicon.svg" alt="AF">
+  <h1>Anime Feels</h1>
+  <p>TikTok Integration — Sandbox Demo</p>
+
+  <div style="margin-bottom:16px">
+    <span class="tag">Login Kit</span>
+    <span class="tag">Content Posting API</span>
+  </div>
+
+  <a id="tiktokBtn" class="btn-tiktok" href="#">
+    <span style="font-size:20px">🎵</span>
+    Connect with TikTok
+  </a>
+
+  <div class="info">
+    <strong>Authorized Scopes:</strong><br>
+    ✅ <code>user.info.basic</code> — View profile info<br>
+    ✅ <code>video.upload</code> — Post videos<br><br>
+    <strong>Redirect URI:</strong><br>
+    <code>/callback.html</code>
+  </div>
+
+  <div id="authStatus" class="status"></div>
+</div>
+
+<script>
+const CLIENT_KEY = 'awtzv3o1carwwxc5';
+const REDIRECT_URI = 'https://shenluxu695.github.io/anime-feels/callback.html';
+const SCOPES = ['user.info.basic', 'video.upload'];
+
+const authUrl = 'https://www.tiktok.com/v2/auth/authorize/'
+  + '?client_key=' + CLIENT_KEY
+  + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
+  + '&response_type=code'
+  + '&scope=' + SCOPES.join(',');
+
+document.getElementById('tiktokBtn').href = authUrl;
+
+// Check URL params for auth response
+const params = new URLSearchParams(window.location.search);
+const code = params.get('code');
+const error = params.get('error');
+const statusDiv = document.getElementById('authStatus');
+
+if (code) {
+  statusDiv.className = 'status success';
+  statusDiv.innerHTML = '✅ Authorization code received!<br><code>' + code.substring(0,20) + '...</code><br><br>🔁 Now exchanging for access token...<br><small>In production, the server exchanges this code for an access token.</small>';
+  // In sandbox, the token info is shown in the Developer Console
+} else if (error) {
+  statusDiv.className = 'status error';
+  statusDiv.innerHTML = '❌ Authorization failed: ' + error;
+}
+</script>
+</body>
+</html>
